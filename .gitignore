@@ -1,0 +1,8 @@
+# EXPO
+.expo
+
+# VSCODE
+.vscode
+
+# NODE
+node_modules
