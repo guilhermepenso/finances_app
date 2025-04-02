@@ -1,0 +1,434 @@
+[
+  {
+    "item": "Netflix Premium",
+    "type": "Entretenimento",
+    "origin": "Netflix",
+    "payment": "Débito",
+    "value": 55.9,
+    "data": "2025-03-28 08:15:00"
+  },
+  {
+    "item": "Uber para Trabalho",
+    "type": "Transporte",
+    "origin": "Uber",
+    "payment": "Crédito",
+    "value": 32.75,
+    "data": "2025-03-27 07:45:00"
+  },
+  {
+    "item": "Shampoo Anticaspa",
+    "type": "Cosmético",
+    "origin": "Drogaria São Paulo",
+    "payment": "Débito",
+    "value": 24.99,
+    "data": "2025-03-26 18:30:00"
+  },
+  {
+    "item": "Pizza Calabresa",
+    "type": "Comida",
+    "origin": "iFood",
+    "payment": "Crédito",
+    "value": 49.9,
+    "data": "2025-03-25 20:22:00"
+  },
+  {
+    "item": "Spotify Family",
+    "type": "Entretenimento",
+    "origin": "Spotify",
+    "payment": "Crédito",
+    "value": 34.9,
+    "data": "2025-03-24 09:10:00"
+  },
+  {
+    "item": "Estacionamento Shopping",
+    "type": "Transporte",
+    "origin": "Estapar",
+    "payment": "Débito",
+    "value": 18.0,
+    "data": "2025-03-23 15:45:00"
+  },
+  {
+    "item": "Protetor Solar",
+    "type": "Cosmético",
+    "origin": "Farmácia Pague Menos",
+    "payment": "Crédito",
+    "value": 59.9,
+    "data": "2025-03-22 12:20:00"
+  },
+  {
+    "item": "Sushi Delivery",
+    "type": "Comida",
+    "origin": "iFood",
+    "payment": "Crédito",
+    "value": 87.5,
+    "data": "2025-03-21 19:35:00"
+  },
+  {
+    "item": "Cinema",
+    "type": "Entretenimento",
+    "origin": "Cinemark",
+    "payment": "Débito",
+    "value": 32.0,
+    "data": "2025-03-20 21:00:00"
+  },
+  {
+    "item": "Manutenção Carro",
+    "type": "Transporte",
+    "origin": "Mecânica Silva",
+    "payment": "Pix",
+    "value": 450.0,
+    "data": "2025-03-19 14:15:00"
+  },
+  {
+    "item": "Perfume Importado",
+    "type": "Cosmético",
+    "origin": "Sephora",
+    "payment": "Crédito",
+    "value": 299.9,
+    "data": "2025-03-18 16:40:00"
+  },
+  {
+    "item": "Mercado Mensal",
+    "type": "Comida",
+    "origin": "Supermercado Dia",
+    "payment": "Débito",
+    "value": 387.65,
+    "data": "2025-03-17 10:25:00"
+  },
+  {
+    "item": "Disney+",
+    "type": "Entretenimento",
+    "origin": "Disney",
+    "payment": "Crédito",
+    "value": 27.9,
+    "data": "2025-03-16 11:50:00"
+  },
+  {
+    "item": "Taxi Aeroporto",
+    "type": "Transporte",
+    "origin": "99Táxi",
+    "payment": "Crédito",
+    "value": 65.3,
+    "data": "2025-03-15 05:30:00"
+  },
+  {
+    "item": "Creme Hidratante",
+    "type": "Cosmético",
+    "origin": "Natue",
+    "payment": "Pix",
+    "value": 42.5,
+    "data": "2025-03-14 13:15:00"
+  },
+  {
+    "item": "Churrasco FDS",
+    "type": "Comida",
+    "origin": "Açougue Qualidade",
+    "payment": "Débito",
+    "value": 128.75,
+    "data": "2025-03-13 17:45:00"
+  },
+  {
+    "item": "HBO Max",
+    "type": "Entretenimento",
+    "origin": "HBO",
+    "payment": "Crédito",
+    "value": 34.9,
+    "data": "2025-03-12 08:20:00"
+  },
+  {
+    "item": "Seguro Carro",
+    "type": "Transporte",
+    "origin": "Porto Seguro",
+    "payment": "Boleto",
+    "value": 289.9,
+    "data": "2025-03-11 09:00:00"
+  },
+  {
+    "item": "Maquiagem",
+    "type": "Cosmético",
+    "origin": "Riachuelo",
+    "payment": "Crédito",
+    "value": 78.4,
+    "data": "2025-03-10 19:10:00"
+  },
+  {
+    "item": "Restaurante Japonês",
+    "type": "Comida",
+    "origin": "Sushi Japa",
+    "payment": "Débito",
+    "value": 145.6,
+    "data": "2025-03-09 21:30:00"
+  },
+  {
+    "item": "Ingresso Show",
+    "type": "Entretenimento",
+    "origin": "Sympla",
+    "payment": "Pix",
+    "value": 220.0,
+    "data": "2025-03-08 22:15:00"
+  },
+  {
+    "item": "Lavagem Carro",
+    "type": "Transporte",
+    "origin": "Lava Jato Express",
+    "payment": "Dinheiro",
+    "value": 45.0,
+    "data": "2025-03-07 16:00:00"
+  },
+  {
+    "item": "Desodorante",
+    "type": "Cosmético",
+    "origin": "Droga Raia",
+    "payment": "Débito",
+    "value": 14.9,
+    "data": "2025-03-06 12:45:00"
+  },
+  {
+    "item": "Café Especial",
+    "type": "Comida",
+    "origin": "Starbucks",
+    "payment": "Crédito",
+    "value": 18.5,
+    "data": "2025-03-05 09:30:00"
+  },
+  {
+    "item": "Prime Video",
+    "type": "Entretenimento",
+    "origin": "Amazon",
+    "payment": "Crédito",
+    "value": 14.9,
+    "data": "2025-03-04 10:20:00"
+  },
+  {
+    "item": "Pedágio Viagem",
+    "type": "Transporte",
+    "origin": "ARTESP",
+    "payment": "Débito",
+    "value": 12.5,
+    "data": "2025-03-03 07:15:00"
+  },
+  {
+    "item": "Sabonete Líquido",
+    "type": "Cosmético",
+    "origin": "Pernambucanas",
+    "payment": "Crédito",
+    "value": 9.99,
+    "data": "2025-03-02 18:50:00"
+  },
+  {
+    "item": "Feira Semanal",
+    "type": "Comida",
+    "origin": "Feira Livre",
+    "payment": "Dinheiro",
+    "value": 62.4,
+    "data": "2025-03-01 08:30:00"
+  },
+  {
+    "item": "Xbox Game Pass",
+    "type": "Entretenimento",
+    "origin": "Microsoft",
+    "payment": "Crédito",
+    "value": 44.9,
+    "data": "2025-02-28 19:05:00"
+  },
+  {
+    "item": "GNV",
+    "type": "Transporte",
+    "origin": "Posto Shell",
+    "payment": "Débito",
+    "value": 85.25,
+    "data": "2025-02-27 17:40:00"
+  },
+  {
+    "item": "Loratadina",
+    "type": "Saúde",
+    "origin": "Farmácia Pague Menos",
+    "payment": "Débito",
+    "value": 17.25,
+    "data": "2025-02-27 15:40:00"
+  },
+  {
+    "item": "Museu Oscar Neyer",
+    "type": "Lazer",
+    "origin": "Museu de Arte",
+    "payment": "Débito",
+    "value": 15.00,
+    "data": "2025-03-27 15:40:00"
+  },
+  {
+    "item": "Tinta Cabelo",
+    "type": "Cosmético",
+    "origin": "Beleza na Web",
+    "payment": "Pix",
+    "value": 29.9,
+    "data": "2025-02-26 14:20:00"
+  },
+  {
+    "item": "Padaria",
+    "type": "Comida",
+    "origin": "Padaria Pão Doce",
+    "payment": "Débito",
+    "value": 23.75,
+    "data": "2025-02-25 07:50:00"
+  },
+  {
+    "item": "YouTube Premium",
+    "type": "Entretenimento",
+    "origin": "Google",
+    "payment": "Crédito",
+    "value": 34.9,
+    "data": "2025-02-24 11:15:00"
+  },
+  {
+    "item": "IPVA",
+    "type": "Transporte",
+    "origin": "Detran",
+    "payment": "Boleto",
+    "value": 1280.5,
+    "data": "2025-02-23 10:00:00"
+  },
+  {
+    "item": "Esmalte",
+    "type": "Cosmético",
+    "origin": "Drogasil",
+    "payment": "Débito",
+    "value": 6.99,
+    "data": "2025-02-22 16:45:00"
+  },
+  {
+    "item": "Delivery Burger",
+    "type": "Comida",
+    "origin": "iFood",
+    "payment": "Crédito",
+    "value": 38.9,
+    "data": "2025-02-21 20:30:00"
+  },
+  {
+    "item": "Livro Novo",
+    "type": "Entretenimento",
+    "origin": "Amazon",
+    "payment": "Pix",
+    "value": 59.9,
+    "data": "2025-02-20 13:10:00"
+  },
+  {
+    "item": "Licenciamento",
+    "type": "Transporte",
+    "origin": "Detran",
+    "payment": "Boleto",
+    "value": 89.9,
+    "data": "2025-02-19 09:45:00"
+  },
+  {
+    "item": "Creme Dental",
+    "type": "Cosmético",
+    "origin": "Supermercado Extra",
+    "payment": "Débito",
+    "value": 7.5,
+    "data": "2025-02-18 12:30:00"
+  },
+  {
+    "item": "Açaí na Tigela",
+    "type": "Comida",
+    "origin": "Açaí & Cia",
+    "payment": "Crédito",
+    "value": 24.9,
+    "data": "2025-02-17 18:20:00"
+  },
+  {
+    "item": "Parque Aquático",
+    "type": "Entretenimento",
+    "origin": "Wet'n Wild",
+    "payment": "Pix",
+    "value": 129.9,
+    "data": "2025-02-16 11:00:00"
+  },
+  {
+    "item": "Multa de Trânsito",
+    "type": "Transporte",
+    "origin": "Detran",
+    "payment": "Boleto",
+    "value": 130.16,
+    "data": "2025-02-15 14:25:00"
+  },
+  {
+    "item": "Loção Pós-Barba",
+    "type": "Cosmético",
+    "origin": "Mundo dos Homens",
+    "payment": "Crédito",
+    "value": 45.6,
+    "data": "2025-02-14 19:15:00"
+  },
+  {
+    "item": "Marmitex",
+    "type": "Comida",
+    "origin": "Restaurante do Zé",
+    "payment": "Dinheiro",
+    "value": 22.0,
+    "data": "2025-02-13 12:45:00"
+  },
+  {
+    "item": "Jogo Steam",
+    "type": "Entretenimento",
+    "origin": "Steam",
+    "payment": "Crédito",
+    "value": 79.9,
+    "data": "2025-02-12 21:30:00"
+  },
+  {
+    "item": "Troca de Óleo",
+    "type": "Transporte",
+    "origin": "Auto Center",
+    "payment": "Débito",
+    "value": 120.0,
+    "data": "2025-02-11 16:10:00"
+  },
+  {
+    "item": "Hidratante Corporal",
+    "type": "Cosmético",
+    "origin": "The Body Shop",
+    "payment": "Crédito",
+    "value": 69.9,
+    "data": "2025-02-10 15:20:00"
+  },
+  {
+    "item": "Pão de Queijo",
+    "type": "Comida",
+    "origin": "Padaria Mineira",
+    "payment": "Débito",
+    "value": 3.5,
+    "data": "2025-02-09 08:05:00"
+  },
+  {
+    "item": "Ingresso Cinema",
+    "type": "Entretenimento",
+    "origin": "Cinépolis",
+    "payment": "Crédito",
+    "value": 28.0,
+    "data": "2025-02-08 20:40:00"
+  },
+  {
+    "item": "Bateria Carro",
+    "type": "Transporte",
+    "origin": "Auto Peças",
+    "payment": "Pix",
+    "value": 320.0,
+    "data": "2025-02-07 10:50:00"
+  },
+  {
+    "item": "Máscara Facial",
+    "type": "Cosmético",
+    "origin": "Sephora",
+    "payment": "Crédito",
+    "value": 89.9,
+    "data": "2025-02-06 18:30:00"
+  },
+  {
+    "item": "Sorvete",
+    "type": "Comida",
+    "origin": "Häagen-Dazs",
+    "payment": "Débito",
+    "value": 34.9,
+    "data": "2025-02-05 21:15:00"
+  }
+]
