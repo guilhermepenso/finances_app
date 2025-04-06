@@ -13,6 +13,7 @@ import {
 import data from "../../../services/db/data.json";
 import { iItemFinances } from "~/types/graph";
 import { Skeleton } from "../skeleton";
+import { Separator } from "../separator";
 
 export const History: React.FC = () => {
   const [items, setItems] = useState<iItemFinances[]>([]);
@@ -28,48 +29,11 @@ export const History: React.FC = () => {
         setActiveTab(data[0].type);
       }
     }, 2000);
-  }, []);
+  }, [data]);
 
-  // Obter tipos únicos para as abas
   const tabTypes = [...new Set(items.map((item) => item.type))];
 
-  // Filtrar itens pela aba ativa
   const filteredItems = items.filter((item) => item.type === activeTab);
-
-  // Função para renderizar o skeleton loading
-  const renderSkeleton = () => {
-    return (
-      <View className="w-full p-4 space-y-4">
-        {/* Skeleton para os tabs */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View className="flex-row gap-2">
-            {[1, 2, 3, 4].map((i) => (
-              <Skeleton key={i} className="h-10 w-24 rounded-full" />
-            ))}
-          </View>
-        </ScrollView>
-
-        {/* Skeleton para a tabela */}
-        <View className="space-y-2">
-          {/* Cabeçalho */}
-          <View className="flex-row justify-between">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Skeleton key={i} className="h-6 w-20" />
-            ))}
-          </View>
-
-          {/* Linhas */}
-          {[1, 2, 3, 4, 5].map((row) => (
-            <View key={row} className="flex-row justify-between py-3">
-              {[1, 2, 3, 4, 5].map((cell) => (
-                <Skeleton key={cell} className="h-5 w-16" />
-              ))}
-            </View>
-          ))}
-        </View>
-      </View>
-    );
-  };
 
   return (
     <View className="w-full h-4/5 m-2 gap-y-3 items-center">
@@ -78,21 +42,24 @@ export const History: React.FC = () => {
       </View>
 
       {loading ? (
-        renderSkeleton()
+        <View className="w-11/12 item-center gap-y-3 border border-border rounded-md">
+          <Skeleton className="h-10 w-full rounded-md" />
+          <Skeleton className="h-4/5 w-full" />
+        </View>
       ) : (
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="w-11/12 justify-center items-center shadow-xl shadow-border"
+          className="w-11/12 justify-center items-center border border-border rounded-md"
         >
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              paddingBottom:0,
+              paddingBottom: 0,
             }}
           >
-            <View className="m-0 p-0">
+            <View className="m-0 p-0 h-2/12">
               <TabsList className="flex flex-row w-full">
                 {tabTypes.map((type) => (
                   <TabsTrigger key={type} value={type}>
@@ -105,21 +72,28 @@ export const History: React.FC = () => {
 
           {/* Conteúdo das abas */}
           {tabTypes.map((type) => (
-            <TabsContent key={type} value={type} className="w-full mt-0 pt-0 m-[-100px]">
-              <Table className="h-4/5 shadow shadow-border">
+            <TabsContent
+              key={type}
+              value={type}
+              className="w-full h-10/12 pt-0 mt-[-22.5%]"
+            >
+              <Table className="h-4/5">
                 <TableHeader>
-                  <TableRow>
-                    <TableHead>
-                      <Text>Item</Text>
+                  <TableRow className="flex-row justify-evenly items-center">
+                    <TableHead className="w-[30%] justify-center items-center px-0">
+                      <Text className="font-bold">Item</Text>
                     </TableHead>
-                    <TableHead>
-                      <Text>Pagamento</Text>
+                    <Separator className="h-[85%]" orientation="vertical" />
+                    <TableHead className="w-[17.5%] justify-center items-center px-0">
+                      <Text className="font-bold">Método</Text>
                     </TableHead>
-                    <TableHead>
-                      <Text>Data</Text>
+                    <Separator className="h-[85%]" orientation="vertical" />
+                    <TableHead className="w-[30%] justify-center items-center px-0">
+                      <Text className="font-bold">Data</Text>
                     </TableHead>
-                    <TableHead>
-                      <Text>Valor</Text>
+                    <Separator className="h-[85%]" orientation="vertical" />
+                    <TableHead className="w-[22.5%] justify-center items-center px-0">
+                      <Text className="font-bold">Valor</Text>
                     </TableHead>
                   </TableRow>
                 </TableHeader>
@@ -132,18 +106,38 @@ export const History: React.FC = () => {
                           new Date(a.data).getTime()
                       )
                       .map((item, index) => (
-                        <TableRow key={index}>
-                          <TableCell>
+                        <TableRow
+                          className="flex flex-row justify-evenly items-center"
+                          key={index}
+                        >
+                          <TableCell className="w-[30%] items-center px-0">
                             <Text>{item.item}</Text>
                           </TableCell>
-                          <TableCell>
+                          <Separator orientation="vertical" />
+                          <TableCell className="w-[17.5%] items-center px-0">
                             <Text>{item.payment}</Text>
                           </TableCell>
-                          <TableCell>
-                            <Text>{new Date(item.data).toLocaleString()}</Text>
+                          <Separator orientation="vertical" />
+                          <TableCell className="w-[30%] items-center px-0">
+                            <Text>
+                              {new Date(item.data).toLocaleString("pt-BR", {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "2-digit",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })}
+                            </Text>
                           </TableCell>
-                          <TableCell>
-                            <Text>{item.value.toFixed(2)}</Text>
+                          <Separator orientation="vertical" />
+                          <TableCell className="w-[22.5%] items-center px-0">
+                            <Text>
+                              {item.value.toLocaleString("pt-BR", {
+                                style: "currency",
+                                currency: "BRL",
+                                maximumFractionDigits: 2,
+                              })}
+                            </Text>
                           </TableCell>
                         </TableRow>
                       ))}
