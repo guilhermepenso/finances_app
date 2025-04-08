@@ -14,6 +14,7 @@ import data from "../../../services/db/data.json";
 import { iItemFinances } from "~/types/graph";
 import { Skeleton } from "../skeleton";
 import { Separator } from "../separator";
+import { width, height } from "~/lib/dimensions";
 
 export const History: React.FC = () => {
   const [items, setItems] = useState<iItemFinances[]>([]);
@@ -50,102 +51,99 @@ export const History: React.FC = () => {
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="w-11/12 justify-center items-center border border-border rounded-md"
+          className="w-11/12 h-[75%] justify-start items-center border border-border rounded-md"
         >
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              paddingBottom: 0,
-            }}
-          >
-            <View className="m-0 p-0 h-2/12">
-              <TabsList className="flex flex-row w-full">
+          <View className="w-full h-[15%] sm:mb-[-6%] md:mb-[-10%]">
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingBottom: 0,
+              }}
+            >
+              <TabsList className="flex flex-row h-full w-full">
                 {tabTypes.map((type) => (
                   <TabsTrigger key={type} value={type}>
                     <Text>{type}</Text>
                   </TabsTrigger>
                 ))}
               </TabsList>
-            </View>
-          </ScrollView>
+            </ScrollView>
+          </View>
 
-          {/* Conteúdo das abas */}
-          {tabTypes.map((type) => (
-            <TabsContent
-              key={type}
-              value={type}
-              className="w-full h-10/12 pt-0 mt-[-22.5%]"
-            >
-              <Table className="h-4/5">
-                <TableHeader>
-                  <TableRow className="flex-row justify-evenly items-center">
-                    <TableHead className="w-[30%] justify-center items-center px-0">
-                      <Text className="font-bold">Item</Text>
-                    </TableHead>
-                    <Separator className="h-[85%]" orientation="vertical" />
-                    <TableHead className="w-[17.5%] justify-center items-center px-0">
-                      <Text className="font-bold">Método</Text>
-                    </TableHead>
-                    <Separator className="h-[85%]" orientation="vertical" />
-                    <TableHead className="w-[30%] justify-center items-center px-0">
-                      <Text className="font-bold">Data</Text>
-                    </TableHead>
-                    <Separator className="h-[85%]" orientation="vertical" />
-                    <TableHead className="w-[22.5%] justify-center items-center px-0">
-                      <Text className="font-bold">Valor</Text>
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <ScrollView>
-                    {filteredItems
-                      .sort(
-                        (a, b) =>
-                          new Date(b.data).getTime() -
-                          new Date(a.data).getTime()
-                      )
-                      .map((item, index) => (
-                        <TableRow
-                          className="flex flex-row justify-evenly items-center"
-                          key={index}
-                        >
-                          <TableCell className="w-[30%] items-center px-0">
-                            <Text>{item.item}</Text>
-                          </TableCell>
-                          <Separator orientation="vertical" />
-                          <TableCell className="w-[17.5%] items-center px-0">
-                            <Text>{item.payment}</Text>
-                          </TableCell>
-                          <Separator orientation="vertical" />
-                          <TableCell className="w-[30%] items-center px-0">
-                            <Text>
-                              {new Date(item.data).toLocaleString("pt-BR", {
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "2-digit",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })}
-                            </Text>
-                          </TableCell>
-                          <Separator orientation="vertical" />
-                          <TableCell className="w-[22.5%] items-center px-0">
-                            <Text>
-                              {item.value.toLocaleString("pt-BR", {
-                                style: "currency",
-                                currency: "BRL",
-                                maximumFractionDigits: 2,
-                              })}
-                            </Text>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                  </ScrollView>
-                </TableBody>
-              </Table>
-            </TabsContent>
-          ))}
+          <View className="w-full h-[85%]">
+            {tabTypes.map((type) => (
+              <TabsContent key={type} value={type} className="w-full h-full">
+                <Table className="sm:h-[105%] md:h-[108%]">
+                  <TableHeader>
+                    <TableRow className="flex-row justify-evenly items-center">
+                      <TableHead className="w-[30%] justify-center items-center px-0">
+                        <Text className="font-bold">Item</Text>
+                      </TableHead>
+                      <Separator className="h-[85%]" orientation="vertical" />
+                      <TableHead className="w-[17.5%] justify-center items-center px-0">
+                        <Text className="font-bold">Método</Text>
+                      </TableHead>
+                      <Separator className="h-[85%]" orientation="vertical" />
+                      <TableHead className="w-[30%] justify-center items-center px-0">
+                        <Text className="font-bold">Data</Text>
+                      </TableHead>
+                      <Separator className="h-[85%]" orientation="vertical" />
+                      <TableHead className="w-[22.5%] justify-center items-center px-0">
+                        <Text className="font-bold">Valor</Text>
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <ScrollView>
+                      {filteredItems
+                        .sort(
+                          (a, b) =>
+                            new Date(b.data).getTime() -
+                            new Date(a.data).getTime()
+                        )
+                        .map((item, index) => (
+                          <TableRow
+                            className="flex flex-row justify-evenly items-center"
+                            key={index}
+                          >
+                            <TableCell className="w-[30%] items-center px-0">
+                              <Text>{item.item}</Text>
+                            </TableCell>
+                            <Separator orientation="vertical" />
+                            <TableCell className="w-[17.5%] items-center px-0">
+                              <Text>{item.payment}</Text>
+                            </TableCell>
+                            <Separator orientation="vertical" />
+                            <TableCell className="w-[30%] items-center px-0">
+                              <Text>
+                                {new Date(item.data).toLocaleString("pt-BR", {
+                                  day: "2-digit",
+                                  month: "2-digit",
+                                  year: "2-digit",
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                })}
+                              </Text>
+                            </TableCell>
+                            <Separator orientation="vertical" />
+                            <TableCell className="w-[22.5%] items-center px-0">
+                              <Text>
+                                {item.value.toLocaleString("pt-BR", {
+                                  style: "currency",
+                                  currency: "BRL",
+                                  maximumFractionDigits: 2,
+                                })}
+                              </Text>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                    </ScrollView>
+                  </TableBody>
+                </Table>
+              </TabsContent>
+            ))}
+          </View>
         </Tabs>
       )}
     </View>
