@@ -37,23 +37,23 @@ export const History: React.FC = () => {
   const filteredItems = items.filter((item) => item.type === activeTab);
 
   return (
-    <View className="w-full h-4/5 m-2 gap-y-3 items-center">
+    <View className="w-full h-4/5 gap-y-3 justify-center items-center">
       <View className="flex flex-row w-11/12 justify-start items-start p-2">
         <Text className="font-bold text-2xl">Histórico</Text>
       </View>
 
       {loading ? (
-        <View className="w-11/12 item-center gap-y-3 border border-border rounded-md">
-          <Skeleton className="h-10 w-full rounded-md" />
-          <Skeleton className="h-4/5 w-full" />
+        <View className="w-11/12 h-[85%] justify-center item-center gap-y-1 px-1 border border-border rounded-md">
+          <Skeleton className="h-[6.5%] w-full rounded-md" />
+          <Skeleton className="h-[91.5%] w-full rounded-md" />
         </View>
       ) : (
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="w-11/12 h-[75%] justify-start items-center border border-border rounded-md"
+          className="w-11/12 h-[85%] justify-start items-center border border-border rounded-md"
         >
-          <View className="w-full h-[15%] sm:mb-[-6%] md:mb-[-10%]">
+          <View className="w-full h-[15%] sm:mb-[-7%] md:mb-[-11%]">
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -71,7 +71,7 @@ export const History: React.FC = () => {
             </ScrollView>
           </View>
 
-          <View className="w-full h-[85%]">
+          <View className="w-full h-[85.5%]">
             {tabTypes.map((type) => (
               <TabsContent key={type} value={type} className="w-full h-full">
                 <Table className="sm:h-[105%] md:h-[108%]">

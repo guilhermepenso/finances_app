@@ -54,54 +54,56 @@ export const Resume: React.FC = () => {
   }, []);
 
   return (
-    <Card className="w-11/12 shadow shadow-border">
-      <CardContent className="native:p-1">
-        {pieChartData ? (
-          <View className="flex flex-row items-center justify-between p-2">
-            <View className="p-2 min-w-[60%]">
-              <View className="flex flex-col content-between justify-center">
-                {pieChartData.map((item, index) => (
-                  <View
-                    key={item.type}
-                    className="flex flex-row justify-between items-center"
-                  >
-                    <View className="justify-start">
-                      <Text
-                        className={`font-bold`}
-                        style={{ color: getColor(index) }}
-                      >
-                        {item.type}
-                      </Text>
+    <View className="flex w-full h-1/5 justify-center items-center">
+      <Card className="w-11/12 shadow shadow-border">
+        <CardContent className="native:p-1">
+          {pieChartData ? (
+            <View className="flex flex-row items-center justify-between p-2">
+              <View className="p-2 min-w-[60%]">
+                <View className="flex flex-col content-between justify-center">
+                  {pieChartData.map((item, index) => (
+                    <View
+                      key={item.type}
+                      className="flex flex-row justify-between items-center"
+                    >
+                      <View className="justify-start">
+                        <Text
+                          className={`font-bold`}
+                          style={{ color: getColor(index) }}
+                        >
+                          {item.type}
+                        </Text>
+                      </View>
+                      <View className="justify-start">
+                        <Text className="font-bold">
+                          {item.value.toLocaleString("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                            maximumFractionDigits: 2,
+                          })}
+                        </Text>
+                      </View>
                     </View>
-                    <View className="justify-start">
-                      <Text className="font-bold">
-                        {item.value.toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                          maximumFractionDigits: 2,
-                        })}
-                      </Text>
-                    </View>
-                  </View>
-                ))}
+                  ))}
+                </View>
               </View>
+              <Separator orientation="vertical" />
+              <PieChart radius={50} data={pieChartData} />
             </View>
-            <Separator orientation="vertical" />
-            <PieChart radius={50} data={pieChartData} />
-          </View>
-        ) : (
-          <View className="flex flex-row items-center justify-between p-2">
-            <View className="flex flex-col content-between items-center gap-y-2 justify-center w-[60%] h-24 p-2">
-              <Skeleton className="w-11/12 h-3.5" />
-              <Skeleton className="w-11/12 h-3.5" />
-              <Skeleton className="w-11/12 h-3.5" />
-              <Skeleton className="w-11/12 h-3.5" />
+          ) : (
+            <View className="flex flex-row items-center justify-between p-2">
+              <View className="flex flex-col content-between items-center gap-y-2 justify-center w-[60%] h-44 p-2">
+                <Skeleton className="w-11/12 h-3.5" />
+                <Skeleton className="w-11/12 h-3.5" />
+                <Skeleton className="w-11/12 h-3.5" />
+                <Skeleton className="w-11/12 h-3.5" />
+              </View>
+              <Separator orientation="vertical" />
+              <Skeleton className="w-28 h-28 rounded-full" />
             </View>
-            <Separator orientation="vertical" />
-            <Skeleton className="w-28 h-28 rounded-full" />
-          </View>
-        )}
-      </CardContent>
-    </Card>
+          )}
+        </CardContent>
+      </Card>
+    </View>
   );
 };

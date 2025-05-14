@@ -58,6 +58,9 @@ export default function RootLayout() {
       <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="screens/home" />
+        <Stack.Screen name="screens/add-item" />
+        <Stack.Screen name="screens/list-item" />
+        <Stack.Screen name="screens/settings" />
       </Stack>
       <PortalHost />
     </ThemeProvider>
