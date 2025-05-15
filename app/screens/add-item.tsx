@@ -6,7 +6,7 @@ import { Text } from "~/components/ui/text";
 export default function AddItem() {
   return (
     <SafeAreaView className="flex-1 bg-background mt-16">
-      <View className="flex items-center justify-center">
+      <View className="flex h-[90%]">
         <Text>Add Item</Text>
       </View>
       <MenuBar />
