@@ -1,6 +1,6 @@
 import { SQLiteDatabase } from "expo-sqlite";
+import { iItemFinances } from "~/types/graph";
 
-// Criação da tabela finances
 export const createFinancesTable = async (db: SQLiteDatabase) => {
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS finances (
@@ -60,11 +60,11 @@ export const getFinancesByMonth = async (
   db: SQLiteDatabase,
   month: number,
   year: number
-) => {
+): Promise<iItemFinances[]> => {
   const startDate = `${year}-${String(month).padStart(2, "0")}-01`;
   const endDate = `${year}-${String(month).padStart(2, "0")}-31`;
 
-  const results = await db.getAllAsync(
+  const results: iItemFinances[] = await db.getAllAsync(
     `
     SELECT * FROM finances
     WHERE date BETWEEN ? AND ?;
