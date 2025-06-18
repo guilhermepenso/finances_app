@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { openDatabase } from "~/services/db/db";
 import { insertFinance } from "~/services/db/finances";
+import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
+import CalendarPicker from "react-native-calendar-picker";
 
 export default function AddItem() {
   const [item, setItem] = useState<string>("");
@@ -14,7 +16,8 @@ export default function AddItem() {
   const [payment, setPayment] = useState<string>("");
   const [parcels, setParcels] = useState<string>("");
   const [value, setValue] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const [day, setDay] = useState<string>("");
+  const [hour, setHour] = useState<string>("");
 
   // Funções de onChange para cada campo
   const onChangeNome = (texto: string) => setItem(texto);
@@ -23,7 +26,8 @@ export default function AddItem() {
   const onChangePagamento = (texto: string) => setPayment(texto);
   const onChangeParcela = (texto: string) => setParcels(texto);
   const onChangeValor = (texto: string) => setValue(texto);
-  const onChangeData = (texto: string) => setDate(texto);
+  const onChangeDay = (day: string) => setDay(day);
+  const onChangeHour = (hour: string) => setHour(hour);
 
   const handleSave = async () => {
     // Validação simples: todos os campos obrigatórios
@@ -34,7 +38,8 @@ export default function AddItem() {
       !payment.trim() ||
       !parcels.trim() ||
       !value.trim() ||
-      !date.trim()
+      !day.trim() ||
+      !hour.trim()
     ) {
       Alert.alert("Erro", "Preencha todos os campos obrigatórios.");
       return;
@@ -49,7 +54,7 @@ export default function AddItem() {
         payment,
         parcels: Number(parcels),
         value: Number(value),
-        date,
+        date: `${day} ${hour}`,
       });
       Alert.alert("Sucesso", "Item adicionado com sucesso!");
       // Limpa os campos após salvar
@@ -59,7 +64,8 @@ export default function AddItem() {
       setPayment("");
       setParcels("");
       setValue("");
-      setDate("");
+      setDay("");
+      setHour("");
     } catch (error) {
       Alert.alert("Erro", "Não foi possível salvar o item.");
     }
@@ -79,6 +85,7 @@ export default function AddItem() {
                 <Input
                   value={item}
                   onChangeText={onChangeNome}
+                  placeholder="..."
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
                 />
@@ -88,6 +95,7 @@ export default function AddItem() {
                 <Input
                   value={type}
                   onChangeText={onChangeTipo}
+                  placeholder="..."
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
                 />
@@ -97,6 +105,7 @@ export default function AddItem() {
                 <Input
                   value={origin}
                   onChangeText={onChangeOrigem}
+                  placeholder="..."
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
                 />
@@ -106,6 +115,7 @@ export default function AddItem() {
                 <Input
                   value={payment}
                   onChangeText={onChangePagamento}
+                  placeholder="..."
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
                 />
@@ -115,6 +125,7 @@ export default function AddItem() {
                 <Input
                   value={parcels}
                   onChangeText={onChangeParcela}
+                  placeholder="..."
                   keyboardType="numeric"
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
@@ -125,20 +136,72 @@ export default function AddItem() {
                 <Input
                   value={value}
                   onChangeText={onChangeValor}
+                  placeholder="..."
                   keyboardType="numeric"
                   aria-labelledby="inputLabel"
                   aria-errormessage="inputError"
                 />
               </View>
-              <View className="gap-y-2">
-                <Text className="text-xl">Data</Text>
-                <Input
-                  value={date}
-                  onChangeText={onChangeData}
-                  placeholder="YYYY-MM-DD"
-                  aria-labelledby="inputLabel"
-                  aria-errormessage="inputError"
-                />
+              <View className="flex flex-row gap-x-4">
+                <View className="flex-1 gap-y-2">
+                  <Text className="text-xl">Data</Text>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline">
+                        <Text className="native:text-lg">{day || "..."}</Text>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="flex max-w-[95vw] ">
+                      <View className="flex justify-center items-center mt-8">
+                        <CalendarPicker
+                          onDateChange={(date) => {
+                            setDay(date.toISOString().slice(0, 10));
+                          }}
+                          months={[
+                            "Janeiro",
+                            "Fevereiro",
+                            "Março",
+                            "Abril",
+                            "Maio",
+                            "Junho",
+                            "Julho",
+                            "Agosto",
+                            "Setembro",
+                            "Outubro",
+                            "Novembro",
+                            "Dezembro"
+                          ]}         
+                          weekdays={[
+                            "Dom",
+                            "Seg",
+                            "Ter",
+                            "Qua",
+                            "Qui",
+                            "Sex",
+                            "Sáb"
+                          ]}                 
+                          textStyle={{ color: "#fff" }}
+                          selectedDayColor="#4F46E5"
+                          todayBackgroundColor="#E0E7FF"
+                          previousTitleStyle={{ fontSize: 25 }}
+                          previousTitle="       <"
+                          nextTitleStyle={{ fontSize: 25 }}
+                          nextTitle=">       "
+                        />
+                      </View>
+                    </DialogContent>
+                  </Dialog>
+                </View>
+                <View className="w-28 gap-y-2">
+                  <Text className="text-xl">Hora</Text>
+                  <Input
+                    value={""} // Adapte para usar um estado para hora, ex: time
+                    onChangeText={() => {}} // Adapte para usar um handler, ex: onChangeTime
+                    placeholder="hh:mm"
+                    aria-labelledby="inputLabel"
+                    aria-errormessage="inputError"
+                  />
+                </View>
               </View>
               <Button className="mt-10" onPress={handleSave}>
                 <Text className="native:text-xl">Salvar Item</Text>
