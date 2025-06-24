@@ -8,6 +8,8 @@ import { openDatabase } from "~/services/db/db";
 import { insertFinance } from "~/services/db/finances";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import CalendarPicker from "react-native-calendar-picker";
+import { TimerPickerModal } from "react-native-timer-picker";
+import { format } from "date-fns";
 
 export default function AddItem() {
   const [item, setItem] = useState<string>("");
@@ -19,6 +21,10 @@ export default function AddItem() {
   const [day, setDay] = useState<string>("");
   const [hour, setHour] = useState<string>("");
 
+  const [showTimePicker, setShowTimePicker] = useState(false);
+  const [selectedHours, setSelectedHours] = useState(0);
+  const [selectedMinutes, setSelectedMinutes] = useState(0);
+
   // Funções de onChange para cada campo
   const onChangeNome = (texto: string) => setItem(texto);
   const onChangeTipo = (texto: string) => setType(texto);
@@ -27,7 +33,17 @@ export default function AddItem() {
   const onChangeParcela = (texto: string) => setParcels(texto);
   const onChangeValor = (texto: string) => setValue(texto);
   const onChangeDay = (day: string) => setDay(day);
-  const onChangeHour = (hour: string) => setHour(hour);
+
+  const onChangeHour = () => {
+    setShowTimePicker(true);
+  };
+
+  const handleTimeConfirm = (pickedDuration: { hours: number; minutes: number }) => {
+    setSelectedHours(pickedDuration.hours);
+    setSelectedMinutes(pickedDuration.minutes);
+    setHour(`${pickedDuration.hours.toString().padStart(2, '0')}:${pickedDuration.minutes.toString().padStart(2, '0')}`);
+    setShowTimePicker(false);
+  };
 
   const handleSave = async () => {
     // Validação simples: todos os campos obrigatórios
@@ -194,12 +210,31 @@ export default function AddItem() {
                 </View>
                 <View className="w-28 gap-y-2">
                   <Text className="text-xl">Hora</Text>
-                  <Input
-                    value={""} // Adapte para usar um estado para hora, ex: time
-                    onChangeText={() => {}} // Adapte para usar um handler, ex: onChangeTime
-                    placeholder="hh:mm"
-                    aria-labelledby="inputLabel"
-                    aria-errormessage="inputError"
+                  <Button variant="outline" onPress={onChangeHour}>
+                    <Text className="native:text-lg">{hour || "..."}</Text>
+                  </Button>
+                  
+                  <TimerPickerModal
+                    visible={showTimePicker}
+                    setIsVisible={setShowTimePicker}
+                    onConfirm={handleTimeConfirm}
+                    onCancel={() => setShowTimePicker(false)}
+                    closeOnOverlayPress
+                    modalTitle="Selecionar Hora"
+                    hideSeconds
+                    initialValue={{
+                      hours: selectedHours,
+                      minutes: selectedMinutes,
+                    }}
+                    styles={{
+                      theme: "dark", // ou "light" dependendo do seu tema
+                      pickerItem: {
+                        fontSize: 24,
+                      },
+                      pickerLabel: {
+                        fontSize: 24,
+                      },
+                    }}
                   />
                 </View>
               </View>
