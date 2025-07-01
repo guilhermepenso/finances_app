@@ -9,5 +9,5 @@ export interface iItemFinances {
   type: string;
   payment: string;
   value: number;
-  data: string;
+  date: string;
 }

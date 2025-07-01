@@ -35,6 +35,7 @@ export const History: React.FC<HistoryProps> = ({ month }) => {
         Number(year)
       );
       if (data) {
+        console.log('data: ', data);
         setItems(data);
         setLoading(false);
         if (data.length > 0) {
@@ -80,7 +81,7 @@ export const History: React.FC<HistoryProps> = ({ month }) => {
                 paddingBottom: 0,
               }}
             >
-              <TabsList className="flex flex-row h-full w-full">
+              <TabsList className="flex flex-row h-full w-full bg-primary-foreground">
                 {tabTypes.map((type) => (
                   <TabsTrigger key={type} value={type}>
                     <Text>{type}</Text>
@@ -125,8 +126,8 @@ export const History: React.FC<HistoryProps> = ({ month }) => {
                         {filteredItems
                           .sort(
                             (a, b) =>
-                              new Date(b.data).getTime() -
-                              new Date(a.data).getTime()
+                              new Date(b.date).getTime() -
+                              new Date(a.date).getTime()
                           )
                           .map((item, index) => (
                             <TableRow
@@ -143,7 +144,7 @@ export const History: React.FC<HistoryProps> = ({ month }) => {
                               <Separator orientation="vertical" />
                               <TableCell className="w-[30%] items-center px-0">
                                 <Text>
-                                  {new Date(item.data).toLocaleString("pt-BR", {
+                                  {new Date(item.date).toLocaleString("pt-BR", {
                                     day: "2-digit",
                                     month: "2-digit",
                                     year: "2-digit",
