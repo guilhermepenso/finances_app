@@ -3,8 +3,8 @@ import { ScrollView, View } from "react-native";
 import { openDatabase } from "~/services/db/db";
 import { getFinancesByMonth } from "~/services/db/finances";
 import { iItemFinances } from "~/types/graph";
-import { Separator } from "../separator";
-import { Skeleton } from "../skeleton";
+import { Separator } from "@/ui/separator";
+import { Skeleton } from "@/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -12,9 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../tabs";
-import { Text } from "../text";
+} from "@/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
+import { Text } from "@/ui/text";
 
 interface HistoryProps {
   month: string;

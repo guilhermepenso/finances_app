@@ -5,9 +5,9 @@ import { Card, CardContent } from "~/components/ui/card";
 import { openDatabase } from "~/services/db/db";
 import { getFinancesByMonth } from "~/services/db/finances";
 import { iItemFinances, iPieChartGraphData } from "~/types/graph";
-import { Separator } from "../separator";
-import { Skeleton } from "../skeleton";
-import { Text } from "../text";
+import { Separator } from "@/ui/separator";
+import { Skeleton } from "@/ui/skeleton";
+import { Text } from "@/ui/text";
 
 interface ResumeProps {
   month: string;

@@ -8,11 +8,9 @@ import { insertFinance } from "~/services/db/finances";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import CalendarPicker from "react-native-calendar-picker";
 import { TimerPickerModal } from "react-native-timer-picker";
-import { format } from "date-fns";
 
 export const ItemForm: React.FC = () => {
-
-   const [item, setItem] = useState<string>("");
+  const [item, setItem] = useState<string>("");
   const [type, setType] = useState<string>("");
   const [origin, setOrigin] = useState<string>("");
   const [payment, setPayment] = useState<string>("");
@@ -25,28 +23,34 @@ export const ItemForm: React.FC = () => {
   const [selectedHours, setSelectedHours] = useState(0);
   const [selectedMinutes, setSelectedMinutes] = useState(0);
 
-  // Funções de onChange para cada campo
   const onChangeNome = (texto: string) => setItem(texto);
   const onChangeTipo = (texto: string) => setType(texto);
   const onChangeOrigem = (texto: string) => setOrigin(texto);
   const onChangePagamento = (texto: string) => setPayment(texto);
   const onChangeParcela = (texto: string) => setParcels(texto);
   const onChangeValor = (texto: string) => setValue(texto);
-  const onChangeDay = (day: string) => setDay(day);
 
   const onChangeHour = () => {
     setShowTimePicker(true);
   };
 
-  const handleTimeConfirm = (pickedDuration: { hours: number; minutes: number }) => {
+  const handleTimeConfirm = (pickedDuration: {
+    hours: number;
+    minutes: number;
+  }) => {
     setSelectedHours(pickedDuration.hours);
     setSelectedMinutes(pickedDuration.minutes);
-    setHour(`${pickedDuration.hours.toString().padStart(2, '0')}:${pickedDuration.minutes.toString().padStart(2, '0')}`);
+    setHour(
+      `${pickedDuration.hours
+        .toString()
+        .padStart(2, "0")}:${pickedDuration.minutes
+        .toString()
+        .padStart(2, "0")}`
+    );
     setShowTimePicker(false);
   };
 
   const handleSave = async () => {
-    // Validação simples: todos os campos obrigatórios
     if (
       !item.trim() ||
       !type.trim() ||

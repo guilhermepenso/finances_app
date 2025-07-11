@@ -6,15 +6,14 @@ import {
   Theme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { Platform } from "react-native";
+import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
-import { PortalHost } from "@rn-primitives/portal";
-import { ThemeToggle } from "~/components/ThemeToggle";
-import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -26,8 +25,7 @@ const DARK_THEME: Theme = {
 };
 
 export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from "expo-router";
 
 export default function RootLayout() {
@@ -41,7 +39,6 @@ export default function RootLayout() {
     }
 
     if (Platform.OS === "web") {
-      // Adds the background color to the html element to prevent white background on overscroll.
       document.documentElement.classList.add("bg-background");
     }
     setAndroidNavigationBar(colorScheme);
@@ -57,10 +54,8 @@ export default function RootLayout() {
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="screens/home" />
-        <Stack.Screen name="screens/add-item" />
-        <Stack.Screen name="screens/list-item" />
-        <Stack.Screen name="screens/settings" />
+        {/* <Stack.Screen name="login" /> */}
+        <Stack.Screen name="(tabs)" />
       </Stack>
       <PortalHost />
     </ThemeProvider>

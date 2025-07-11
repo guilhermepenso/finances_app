@@ -1,11 +1,11 @@
 import { View } from "react-native";
-import { Text } from "../text";
+import { Text } from "@/ui/text";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "../dropdown-menu";
-import { Button } from "../button";
+} from "@/ui/dropdown-menu";
+import { Button } from "@/ui/button";
 import { useState } from "react";
 
 interface MonthPickerProps {
